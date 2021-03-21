@@ -50,5 +50,3 @@ const jwtEnv = {
 module.exports = {
   port, env, uriDB, jwtEnv
 }
-
-
