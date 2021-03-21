@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 let Schema = mongoose.Schema;
 
+// Definir colección de usuarios
 let userSchema = new Schema({
   name: {type: String, required: [true, "name is required"]},
   email: {type: String, unique: true, required: [true, "email is required"]},

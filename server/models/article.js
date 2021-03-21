@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 let Schema = mongoose.Schema;
 
+// Definir colección de artículos
 let articleSchema = new Schema({
   title: {type: String, required: [true, "title is reuqired"]},
   content: {type: String, required: [true, "content is required"]},
