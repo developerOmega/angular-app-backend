@@ -10,7 +10,7 @@ const path = require('path');
 const publicPath = path.resolve(__dirname, '../public');
 app.use(express.static(publicPath));
 
-// Configuracion de CORS
+// Configuración de CORS, solo hay acceso al localhost:4200
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', 'http://localhost:4200');
   res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-COntrol-Allow-Request-Method');
@@ -25,9 +25,10 @@ app.use(bodyParser.urlencoded({extended: false}));
 // parse aplication json
 app.use(bodyParser.json());
 
-// Rutas
+// Ejecutar rutas
 app.use(require('./routes/index'));
 
+// Coneccion a mongo db
 mongoose.connect(uriDB,
   {useUnifiedTopology: true, useNewUrlParser: true, useFindAndModify: false}, 
   (err, res) => {
@@ -39,6 +40,7 @@ mongoose.connect(uriDB,
   }
 })
 
+// Accediendo al puerto 3000
 app.listen(port, () => {
   console.log(`Escuachando en el puerto ${port}`);
 });
